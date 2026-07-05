@@ -63,7 +63,7 @@ async function start() {
 
         const logins = await login(username, password);
         document.querySelector("#login").innerHTML = logins;
-        const load = await loadDashboard();
+        await loadDashboard();
     } catch(error) {
         document.querySelector("#login").innerHTML = error;
     }
