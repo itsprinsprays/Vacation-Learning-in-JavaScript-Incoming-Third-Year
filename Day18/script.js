@@ -1,17 +1,17 @@
-async function getUSers() {
+// async function getUSers() {
 
-    const response = await fetch ("https://jsonplaceholder.typicode.com/users");
+//     const response = await fetch ("https://jsonplaceholder.typicode.com/users");
 
-    const users = await response.json();
+//     const users = await response.json();
 
-    console.log(users);
-}
+//     console.log(users);
+// }
 
-getUSers();
+// getUSers();
 
 async function getUserById(id) {
+    const response = await fetch ("https://sonplaceholder.typicode.com/users");
 
-    const response = await fetch ("https://jsonplaceholder.typicode.com/users");
 
     const user = await response.json();
     const filteredUser = user
@@ -21,10 +21,21 @@ async function getUserById(id) {
 }
 
 async function start() {
+
+    try {
+
     const user = await getUserById(100);
 
-    if(user === undefined) console.log("User not found.");
+    if(!user) {
+        console.log("User not found.");
+        return;
+    }
+
     else console.log(user.name);
+
+    } catch(error) {
+        console.log("Failed to connect to the server");
+    }
 }
 
 start();
