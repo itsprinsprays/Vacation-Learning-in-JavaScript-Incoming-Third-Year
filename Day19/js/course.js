@@ -26,14 +26,20 @@ async function handleCreateCourse(event) {
 
 async function searchCourseById(event) {
     event.preventDefault();
+    const tableBody = document.querySelector("#courseTableBody")
 
     const id = document.querySelector("#courseId").value;
 
     const course = await getCourseById(id);
 
     if(course) {
-        document.querySelector("#courseResult").innerHTML = 
-        `Course: ${course.courseName}, Units: ${course.unit}`;
+        tableBody.innerHTML = `
+        <tr>
+            <td>${course.courseId}</td>
+            <td>${course.courseName}</td>
+            <td>${course.unit}</td>
+        </tr>
+        `;
     } 
 
     event.target.reset();
@@ -77,7 +83,7 @@ async function deleteCourseById(event) {
 
         loadCourses();
     }
-
+                event.target.reset();
 
     } catch(error) {
         console.error(error);
