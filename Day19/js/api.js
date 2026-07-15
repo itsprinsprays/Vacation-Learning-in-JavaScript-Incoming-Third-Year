@@ -63,3 +63,24 @@ async function getAllCourse(page = 0, size = 5) {
         console.error(error);
     }
 }
+
+async function deleteCourse(courseId) {
+    try {
+       
+        const response = await fetch(`http://localhost:8080/course/delete/${courseId}`, {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"}
+        });
+
+        if(!response.ok) {
+            const error = await response.json();
+            alert(error.message);
+            throw new Error(error.message);
+        }
+
+        return await response.json();
+
+    } catch(error) {
+        console.error(error);
+    }
+}

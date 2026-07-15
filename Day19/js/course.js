@@ -14,6 +14,8 @@ async function handleCreateCourse(event) {
 
         alert("Course Created Succesfully");
 
+        loadCourses();
+
         event.target.reset();
 
 
@@ -52,7 +54,7 @@ async function loadCourses() {
                 <td>${course.courseId}</td>
                 <td>${course.courseName}</td>
                 <td>${course.unit}</td>
-                </tr>
+            </tr>
                 `;
         });
 
@@ -61,15 +63,39 @@ async function loadCourses() {
     }
 }
 
+async function deleteCourseById(event) {
+    event.preventDefault();
+
+    const courseId = document.querySelector("#deleteCourseId").value;
+
+    try {
+        const deletedCourse = await deleteCourse(courseId);
+
+        if(deletedCourse) {
+            const deleteResult = document.querySelector("#courseResult").innerHTML =
+                `${deletedCourse.courseName} Deleted`; 
+
+        loadCourses();
+    }
+
+
+    } catch(error) {
+        console.error(error);
+    }
+}
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const createForm  = document.getElementById("CreateCourse");
 
+    const createForm  = document.getElementById("CreateCourse");
     createForm .addEventListener("submit", handleCreateCourse);
 
     const searchForm  = document.querySelector("#searchCourseId");
     searchForm .addEventListener("submit", searchCourseById);
 
     loadCourses();
+
+    const deleteForm = document.querySelector("#deleteCourse");
+    deleteForm .addEventListener("submit", deleteCourseById);
 });
