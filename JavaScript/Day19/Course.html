@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+
+        <form id="CreateCourse">
+            <input type="text" id="courseName" placeholder="Enter Course Name">
+            <input type="number" id="unit" placeholder="Enter Course Unit">
+            <button type="submit">Create</button>
+
+        </form>
+        <br>
+        <form id="searchCourseId">
+            <input type="number" id="courseId" placeholder="Enter Course ID">
+            <button type="submit">Search</button>
+         <div id="courseResult">sad</div>
+        </form>
+
+        <form id="deleteCourse">
+            <input type="number" id="deleteCourseId" placeholder="Delete Course ID">
+            <button type="submit">Delete</button>
+        </form>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Course Name</th>
+                    <th>Unit</th>
+                    <th>Function</th>
+                </tr>
+            </thead>
+
+                <tbody id="courseTableBody">
+            
+                </tbody>
+
+        </table>
+
+
+        
+    </body>
+
+    <script src = "js/api.js"></script>
+    <script src = "js/course.js"></script>
+
+</html>

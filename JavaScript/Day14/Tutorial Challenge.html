@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+
+        <input id = "inpfirstName" type = "text" placeholder = "First Name">
+        <input id = "inplastName" type = "text" placeholder = "Last Name"> <br>
+
+        <input id = "dtbirthday" type = "date" placeholder = "Birthday"> <br>
+
+        <input id = "rMale" type = "radio" name = "sex" value = "Male">
+        <label for = "rMale">Male</label>
+
+        <input id = "rFemale" type = "radio" name = "sex" value = "Female">
+        <label for = "rFemale">Female</label>
+
+        <input id = "rOther" type = "radio" name = "sex" value = "Other">
+        <label for = "rOther">Other</label>
+
+        <br>
+
+        <select id = "country">
+            <option value = "PHILIPPINES">PHILIPPINES</option>
+            <option value = "USA">USA</option>
+            <option value = "JAPAN">JAPAN</option>
+        </select>
+
+        <br>
+
+        <input id = "cbpolicy" type = "checkbox">
+        <label for = "cbpolicy">Agree to Privacy Policy</label>
+
+        <br>
+
+        <button onclick = "submitForm()">Submit</button>
+
+        <p id = "fullName"></p>
+        <p id = "birthdate"></p>
+        <p id = "pSex"></p>
+        <p id = "pCountry"></p> 
+
+
+    </body>
+
+    <script src = challengeScript.js></script>
+
+</html>
