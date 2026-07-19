@@ -1,5 +1,5 @@
 export default function Footer() {
     return(
-        <h1>Hello</h1>
+       <h1>For Educational Purposes</h1>
     );
 }
