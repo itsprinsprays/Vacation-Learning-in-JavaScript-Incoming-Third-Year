@@ -17,32 +17,28 @@ export default function Counter() {
     const colors = ["Red","Blue", "Green", "Yellow", "Purple"
 ];
 
-    const [count, setCount] = useState(0);
-    const [name, setName] = useState("");
-    const [age, setAge] = useState(0);
-    const [course, setCourse] = useState("");
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [show, setShow] = useState(false);
-    const [color, setColor] = useState("");
+    const [color, setColor] = useState("")
+
+    const currentStudent = students[currentIndex];
 
     return (
         <>
-
-        <h1>{count}</h1>
-        <h1 style={{color}}>Name :{name}</h1>  
-        <h1>Age : {age}</h1>    
-        <h1>Course : {course}</h1>  
+        
+        <h1>{currentIndex}</h1>
+        <h1>Name: {currentStudent.name}</h1>
+        <h1>Age: {currentStudent.age}</h1>
+        <h1>Course: {currentStudent.course}</h1>
 
 
         
         <button onClick={() => {
-            if(show === true) {
-            const nextCount = count + 1;
-            if(nextCount <= students.length) {
-                setCount(nextCount)
-                setName(students[nextCount - 1].name)
-                setAge(students[nextCount - 1].age)
-                setCourse(students[nextCount - 1].course)
-                setColor(colors[nextCount - 1])
+            if(show) {
+            const nextCount = currentIndex + 1;
+            if(nextCount < students.length) {
+                setCurrentIndex(nextCount)
+                setColor(colors[nextCount])
             } else alert("No Student Ahead!");
         }
         }}> Increase</button>
