@@ -18,6 +18,7 @@ export default function Counter() {
     const [name, setName] = useState("");
     const [age, setAge] = useState(0);
     const [course, setCourse] = useState("");
+    const [show, setShow] = useState(false);
 
     return (
         <>
@@ -30,6 +31,7 @@ export default function Counter() {
 
         
         <button onClick={() => {
+            if(show === true) {
             const nextCount = count + 1;
             if(nextCount <= students.length) {
                 setCount(nextCount)
@@ -37,8 +39,15 @@ export default function Counter() {
                 setAge(students[nextCount - 1].age)
                 setCourse(students[nextCount - 1].course)
             } else alert("No Student Ahead!");
+        }
         }}> Increase</button>
 
+        <button onClick ={() => {
+            setShow(!show);
+        }}>
+             {show ? "Hide" : "Show"}</button>
+
+    
         </>
     );
 }
