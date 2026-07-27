@@ -23,6 +23,13 @@ export default function Counter() {
 
     const currentStudent = students[currentIndex];
 
+    const [name, setName] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        alert("hello " + name);
+    }
+
     return (
         <>
         
@@ -36,10 +43,12 @@ export default function Counter() {
         <button onClick={() => {
             if(show) {
             const nextCount = currentIndex + 1;
-            if(nextCount < students.length) {
-                setCurrentIndex(nextCount)
-                setColor(colors[nextCount])
-            } else alert("No Student Ahead!");
+                if(nextCount < students.length) {
+                    setCurrentIndex(nextCount)
+                    setColor(colors[nextCount])
+                } else {
+                    alert("No Student Ahead!");
+                }
         }
         }}> Increase</button>
 
@@ -48,7 +57,16 @@ export default function Counter() {
         }}>
              {show ? "Hide" : "Show"}</button>
 
-    
+        <form onSubmit={handleSubmit}>
+        <input 
+            type="text"
+            onChange={(event) => {
+                setName(event.target.value);
+            }}
+            />
+            <button>Submit</button>
+        </form>
+            <h2>Hello {name}</h2>
         </>
     );
 }
