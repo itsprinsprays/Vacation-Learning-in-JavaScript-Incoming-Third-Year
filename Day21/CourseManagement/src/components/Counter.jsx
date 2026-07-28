@@ -24,11 +24,13 @@ export default function Counter() {
     const currentStudent = students[currentIndex];
 
     const [name, setName] = useState("");
+    const [course, setCourse] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
-        alert("hello " + name);
+        alert("Name : " + name + "\nCourse: " + course);
     }
+
 
     return (
         <>
@@ -58,15 +60,26 @@ export default function Counter() {
              {show ? "Hide" : "Show"}</button>
 
         <form onSubmit={handleSubmit}>
-        <input 
-            type="text"
-            onChange={(event) => {
-                setName(event.target.value);
-            }}
+
+            <input
+                value={name}
+                onChange={(e) => {
+                    setName(e.target.value)
+                }}
+            
             />
+
+            <input
+                value={course}
+                onChange={(e) => setCourse(e.target.value)}
+                />
+
             <button>Submit</button>
+
+            <h1>Name : {name}</h1>
+            <h1>Course: {course}</h1>
         </form>
-            <h2>Hello {name}</h2>
+        
         </>
     );
 }
