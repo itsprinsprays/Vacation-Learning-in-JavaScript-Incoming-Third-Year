@@ -23,13 +23,33 @@ export default function Counter() {
 
     const currentStudent = students[currentIndex];
 
-    const [name, setName] = useState("");
-    const [course, setCourse] = useState("");
+    const [formData, setFormData] = useState({
+        name: "",
+        course: "",
+        age: "",
+        email: ""
+    });
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        alert("Name : " + name + "\nCourse: " + course);
+    function handleSubmit(e) {
+        e.preventDefault();
+        alert (`Name: ${formData.name} \nCourse: ${formData.course} \nAge: ${formData.age} \nEmail: ${formData.email}`);
+
+               setFormData({
+                    name: "",
+                    course: "",
+                    age: "",
+                    email: ""
+                });
     }
+
+    function handleChanges(e) {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    }
+
+
 
 
     return (
@@ -60,24 +80,49 @@ export default function Counter() {
              {show ? "Hide" : "Show"}</button>
 
         <form onSubmit={handleSubmit}>
-
-            <input
-                value={name}
-                onChange={(e) => {
-                    setName(e.target.value)
-                }}
             
+            <input
+                placeholder="Name"
+                value={formData.name}
+                onChange={(e) => 
+                    setFormData({
+                        ...formData,
+                        name: e.target.value
+                    })
+                }
             />
 
-            <input
-                value={course}
-                onChange={(e) => setCourse(e.target.value)}
+            <input 
+                placeholder="Course"
+                value={formData.course}
+                onChange={(e) => 
+                    setFormData({
+                        ...formData,
+                        course: e.target.value
+                    })
+                }
                 />
 
-            <button>Submit</button>
+            <input
+                placeholder="Age"
+                name="age"
+                value={formData.age}
+                onChange={handleChanges}
+            />
 
-            <h1>Name : {name}</h1>
-            <h1>Course: {course}</h1>
+            <input 
+                placeholder="Email"
+                name="email"
+                value={formData.email}
+                onChange={handleChanges}
+            />
+
+                <button>Submit</button>
+
+                <h2>{formData.name}</h2>
+                <h2>{formData.course}</h2>
+                <h2>{formData.age}</h2>
+                <h2>{formData.email}</h2>
         </form>
         
         </>
