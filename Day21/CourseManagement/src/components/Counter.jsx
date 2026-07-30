@@ -42,13 +42,12 @@ export default function Counter() {
                 });
     }
 
-    function handleChanges(e) {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    }
-
+   function handleChanges(e) {
+    setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+    });
+   }
 
 
 
