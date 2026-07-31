@@ -9,7 +9,6 @@ export default function Day22() {
   const [currentStudent, setCurrentStudent] = useState(null);
 
   const [formData, setFormData] = useState({
-       id: "",
        name: "",
        age: "",
        course: ""
@@ -25,7 +24,7 @@ export default function Day22() {
   function addStudent(e) {
     e.preventDefault();
     const newStudent = {
-      id: formData.id,
+      id: students.length + 1,
       name: formData.name,
       age: formData.age,
       course: formData.course
@@ -38,7 +37,6 @@ export default function Day22() {
 
     alert("Added Succesfully");
     setFormData({
-       id: "",
        name: "",
        age: "",
        course: ""
@@ -56,6 +54,11 @@ export default function Day22() {
             <button onClick={()=> {
                 setCurrentStudent(student)
             }}>Select</button>
+
+            <button onClick={() => {
+          
+                setStudents(students.filter(s => s.id !== student.id));
+            }}>Delete</button>
 
     
         </div>  
@@ -77,13 +80,6 @@ export default function Day22() {
       }
 
       <form onSubmit={addStudent}>
-
-        <input 
-          placeholder="Enter Id"
-          name="id"
-          value={formData.id}
-          onChange={handleChanges}
-        />
 
         <input 
           placeholder="Enter Name"
