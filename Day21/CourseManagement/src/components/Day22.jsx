@@ -18,16 +18,25 @@ export default function Day22() {
             <button onClick={()=> {
                 setCurrentStudent(student)
             }}>Select</button>
+
+    
         </div>  
       )
       
       )}
 
                  {currentStudent && (
+                  <>
         <h1>
           You Selected: {currentStudent.name} ({currentStudent.age}, {currentStudent.course})
         </h1>
-      )}
+             <button onClick={() => {
+              setCurrentStudent(null);
+            }}>Unselect</button>
+            </>
+      )
+
+      }
 
     </>
   );
