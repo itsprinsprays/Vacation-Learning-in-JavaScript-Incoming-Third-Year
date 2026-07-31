@@ -8,16 +8,16 @@ import Day22 from "./components/Day22.jsx"
 function App() {
   return (
     <>
-    <Header />
+    {/* <Header />
     <div>
       <h1>Course Management System</h1>
-      <p>Welcome to my first React application!</p>
-      <Main name="Prince Benitez" age={21}/>
+      <p>Welcome to my first React application!</p> */}
+      {/* <Main name="Prince Benitez" age={21}/> */}
 
-      <Counter />
+      {/* <Counter /> */}
       <Day22 />
-    </div>
-    <Footer />
+    {/* </div>
+    <Footer /> */}
   </>
   )
 }
