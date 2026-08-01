@@ -7,6 +7,7 @@ export default function Day22() {
     { id: 2, name: "John", age: 20, course: "BSCS"}
   ]);
   const [currentStudent, setCurrentStudent] = useState(null);
+  const [editingId, setEditingId] = useState(null);
 
   const [formData, setFormData] = useState({
        name: "",
@@ -21,7 +22,7 @@ export default function Day22() {
     });
   }
 
-  function addStudent(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     const newStudent = {
       id: students.length + 1,
@@ -30,10 +31,21 @@ export default function Day22() {
       course: formData.course
     }
 
+    if (editingId === null) {
+
     setStudents([
       ...students,
       newStudent
     ]);
+
+  } else {
+    setStudents(students.map(student => {
+      if (student.id === editingId) {
+        return { ...student, ...formData };
+      }
+      return student;
+    }));
+  }
 
     alert("Added Succesfully");
     setFormData({
@@ -50,10 +62,16 @@ export default function Day22() {
       {students.map(student => (
         <div key={student.id}>
             <h2>Name: {student.name}</h2>
+            <h2>Age: {student.age}</h2>
+            <h2>Course: {student.course}</h2>
 
             <button onClick={()=> {
                 setCurrentStudent(student)
             }}>Select</button>
+
+            <button onClick={() => {
+                setEditingId(student.id);
+            }}>Edit</button>
 
             <button onClick={() => {
           
@@ -66,7 +84,7 @@ export default function Day22() {
       
       )}
 
-                 {currentStudent && (
+        {currentStudent && (
                   <>
         <h1>
           You Selected: {currentStudent.name} ({currentStudent.age}, {currentStudent.course})
@@ -77,9 +95,10 @@ export default function Day22() {
             </>
       )
 
+      
       }
 
-      <form onSubmit={addStudent}>
+      <form onSubmit={handleSubmit}>
 
         <input 
           placeholder="Enter Name"
@@ -102,7 +121,9 @@ export default function Day22() {
           onChange={handleChanges}
         />
 
-        <button >Submit</button>
+        <button >
+          {editingId ? "Update" : "Add"} Student
+        </button>
 
 
 
