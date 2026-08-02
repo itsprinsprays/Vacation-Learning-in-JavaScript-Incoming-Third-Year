@@ -71,6 +71,11 @@ export default function Day22() {
 
             <button onClick={() => {
                 setEditingId(student.id);
+                setFormData({
+                  name: student.name,
+                  age: student.age,
+                  course: student.course
+                });
             }}>Edit</button>
 
             <button onClick={() => {
