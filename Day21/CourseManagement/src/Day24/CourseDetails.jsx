@@ -1,4 +1,4 @@
-export default function getCourseById({ course }) {
+export default function CourseDetails({ course }) {
 
     return (
         <div>

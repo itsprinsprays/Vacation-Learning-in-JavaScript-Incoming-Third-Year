@@ -5,6 +5,7 @@ import Main from "./components/Main/Main"
 import Counter from "./components/Counter"
 import Day22 from "./components/Day22.jsx"
 import Day23 from "./components/Day23.jsx"
+import Day24 from "./Day24/CoursePage.jsx"
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       {/* <Main name="Prince Benitez" age={21}/> */}
 
       {/* <Counter /> */}
-      <Day23 />
+      <Day24 />
     {/* </div>
     <Footer /> */}
   </>
