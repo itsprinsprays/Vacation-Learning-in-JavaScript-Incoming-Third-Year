@@ -19,8 +19,12 @@ export default function Day23() {
 
     return (
         <>
-    <h1>Course: {course.courseName}</h1>
-    <h1>Unit: {course.unit}</h1>
+    {course && (
+        <>
+            <h1>Course: {course.courseName}</h1>
+            <h1>Unit: {course.unit}</h1>
+        </>
+    )}
     </>
     )
 
