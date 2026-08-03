@@ -11,8 +11,8 @@ export async function getCourseById(id) {
 
 }
 
-export async function getAllCourses() {
-    const response = await fetch(`http://localhost:8080/course/all`);
+export async function getAllCourses(size = 2, page = 0) {
+    const response = await fetch(`http://localhost:8080/course/all?size=${size}&page=${page}`);
 
     if(!response.ok) {
         const errorMessage = await response.json();

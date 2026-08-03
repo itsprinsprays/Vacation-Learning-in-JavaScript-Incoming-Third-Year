@@ -8,6 +8,10 @@ export default function CoursePage() {
     const [courseId, setCourseId] = useState("");
     const [error, setError] = useState("");
     const [allCourses, setAllCourses] = useState([]);
+     const [page, setPage] = useState(0);
+    const [size, setSize] = useState(2);
+
+
 
 
         async function fetchCourseById() {
@@ -22,9 +26,9 @@ export default function CoursePage() {
             }
         }
 
-        async function fetchAllCourses() {
+        async function fetchAllCourses(pageNum = 0) {
             try {
-                const data = await getAllCourses();
+                const data = await getAllCourses(size, pageNum);
                       setAllCourses(data.content || data);
             } catch(error) {
                 console.error("Error fetching all courses:", error);
@@ -33,8 +37,8 @@ export default function CoursePage() {
         }
 
         useEffect(() => {
-            fetchAllCourses();
-        }, []);
+            fetchAllCourses(page);
+        }, [page]);
 
     return (
         <>
@@ -64,15 +68,38 @@ export default function CoursePage() {
                     </thead>
                     <tbody>
                         {allCourses.map(course => (
-                            <tr key={course.id}>
-                                <td>{course.id}</td>
+                            <tr key={course.courseId}>
+                                <td>{course.courseId}</td>
                                 <td>{course.courseName}</td>
                                 <td>{course.unit}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+                        
+
             </div>
+
+            <button
+    onClick={() => {
+        const newPage = page - 1;
+        setPage(newPage);
+        fetchAllCourses(newPage);
+    }}
+    disabled={page === 0}
+>
+    Previous
+</button>
+
+<button
+    onClick={() => {
+        const newPage = page + 1;
+        setPage(newPage);
+        fetchAllCourses(newPage);
+    }}
+>
+    Next
+</button>
         </>
     );
 }
