@@ -1,15 +1,27 @@
 import { useState, useEffect} from "react";
-import { getCourseById, getAllCourses } from "./CourseService.js";
+import { getCourseById, getAllCourses, createCourse } from "./CourseService.js";
 import CourseDetails from "./CourseDetails.jsx";
 import CourseInput from "./CourseInput.jsx";
+import CreateCourseForm from "./CreateCourseForm.jsx"
 
 export default function CoursePage() {
     const [course, setCourse] = useState(null);
     const [courseId, setCourseId] = useState("");
     const [error, setError] = useState("");
     const [allCourses, setAllCourses] = useState([]);
-     const [page, setPage] = useState(0);
+    const [page, setPage] = useState(0);
     const [size, setSize] = useState(2);
+
+
+    async function handleCreateCourse(formData) {
+        try {
+            await createCourse(formData);
+            fetchAllCourses(page);
+        } catch(error) {
+            console.error("Error creating course:", error);
+            setError(error.message);
+        }
+    }
 
 
 
@@ -26,7 +38,7 @@ export default function CoursePage() {
             }
         }
 
-        async function fetchAllCourses(pageNum = 0) {
+        async function fetchAllCourses(pageNum) {
             try {
                 const data = await getAllCourses(size, pageNum);
                       setAllCourses(data.content || data);
@@ -80,26 +92,29 @@ export default function CoursePage() {
 
             </div>
 
-            <button
-    onClick={() => {
-        const newPage = page - 1;
-        setPage(newPage);
-        fetchAllCourses(newPage);
-    }}
-    disabled={page === 0}
->
-    Previous
-</button>
+                        <button
+                onClick={() => {
+                    const newPage = page - 1;
+                    setPage(newPage);
+                    fetchAllCourses(newPage);
+                }}
+                disabled={page === 0}
+            >
+                Previous
+            </button>
 
-<button
-    onClick={() => {
-        const newPage = page + 1;
-        setPage(newPage);
-        fetchAllCourses(newPage);
-    }}
->
-    Next
-</button>
-        </>
-    );
+            <button
+                onClick={() => {
+                    const newPage = page + 1;
+                    setPage(newPage);
+                    fetchAllCourses(newPage);
+                }}
+            >
+                Next
+            </button>
+
+            <CreateCourseForm onCreate={handleCreateCourse} />
+                  
+                    </>
+                );
 }
