@@ -19,7 +19,10 @@ export default function UpdateCourseForm({ onUpdate, course }) {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        await onUpdate(formData);
+        await onUpdate({
+            ...course,
+            ...formData
+        });
     }
 
     return (

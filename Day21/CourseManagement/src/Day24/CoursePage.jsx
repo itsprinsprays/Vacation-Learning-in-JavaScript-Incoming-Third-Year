@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { getCourseById, getAllCourses, createCourse } from "./CourseService.js";
+import { getCourseById, getAllCourses, createCourse, updateCourse } from "./CourseService.js";
 import CourseDetails from "./CourseDetails.jsx";
 import CourseInput from "./CourseInput.jsx";
 import CreateCourseForm from "./CreateCourseForm.jsx"

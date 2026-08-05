@@ -41,7 +41,7 @@ export async function createCourse(course) {
 
 export async function updateCourse(id, course) {
     const response = await fetch(`http://localhost:8080/course/update/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
