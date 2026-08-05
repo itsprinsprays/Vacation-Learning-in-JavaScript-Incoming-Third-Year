@@ -3,6 +3,7 @@ import { getCourseById, getAllCourses, createCourse } from "./CourseService.js";
 import CourseDetails from "./CourseDetails.jsx";
 import CourseInput from "./CourseInput.jsx";
 import CreateCourseForm from "./CreateCourseForm.jsx"
+import UpdateCourseForm from "./UpdateCourseForm.jsx";
 
 export default function CoursePage() {
     const [course, setCourse] = useState(null);
@@ -24,8 +25,15 @@ export default function CoursePage() {
         }
     }
 
-
-
+    async function handleUpdateCourse(formData) {
+        try {
+            await updateCourse(editId, formData);
+            fetchAllCourses(page);
+        } catch(error) {
+            console.error("Error updating course:", error);
+            setError(error.message);
+        }
+    }
 
         async function fetchCourseById() {
             try {
@@ -120,6 +128,7 @@ export default function CoursePage() {
             </button>
 
             <CreateCourseForm onCreate={handleCreateCourse} />
+            <UpdateCourseForm course={course} onUpdate={handleUpdateCourse} />
                   
                     </>
                 );
