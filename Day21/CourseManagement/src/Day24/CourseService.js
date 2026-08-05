@@ -38,3 +38,20 @@ export async function createCourse(course) {
 
     return await response.json();
 }
+
+export async function updateCourse(id, course) {
+    const response = await fetch(`http://localhost:8080/course/update/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(course)
+    });
+
+    if(!response.ok) {
+        const errorMessage = response.json();
+        throw new Error(errorMessage.message);
+    }
+
+    return await response.json();
+}
