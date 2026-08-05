@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormInputs from "./FormInputs.jsx";
 
 export default function CreateCourseForm({ onCreate }) {
 
@@ -7,12 +8,6 @@ export default function CreateCourseForm({ onCreate }) {
           "unit": ""
       });
 
-      function handleChange(e) {
-        setFormData({
-          ...formData,
-          [e.target.name]: e.target.value
-        });
-      }
 
      async function handleSubmit(e) {
         e.preventDefault();
@@ -27,25 +22,10 @@ export default function CreateCourseForm({ onCreate }) {
 
       return (
         <form onSubmit={handleSubmit}>
-
-          <input 
-            type="text"
-            placeholder="Course Name"
-            name="courseName"
-            value={formData.courseName}
-            onChange={handleChange}
-            />
-
-          <input 
-            type="number"
-            placeholder="Unit"
-            name="unit"
-            value={formData.unit}
-            onChange={handleChange}
-            />
-
-            <button type="submit">Create Course</button>
+       <FormInputs formData={formData} setFormData={setFormData} /> 
+       <button type="submit">Create Course</button>
         </form>
+           
       )
 
   

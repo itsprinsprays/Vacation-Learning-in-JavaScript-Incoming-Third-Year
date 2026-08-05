@@ -11,6 +11,7 @@ export default function CoursePage() {
     const [allCourses, setAllCourses] = useState([]);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(2);
+    const [editId, setEditId] = useState(0);
 
 
     async function handleCreateCourse(formData) {
@@ -84,6 +85,11 @@ export default function CoursePage() {
                                 <td>{course.courseId}</td>
                                 <td>{course.courseName}</td>
                                 <td>{course.unit}</td>
+                                <td>
+                                    <button onClick={() => {
+                                        setEditId(course.courseId);
+                                    }}>Edit</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
