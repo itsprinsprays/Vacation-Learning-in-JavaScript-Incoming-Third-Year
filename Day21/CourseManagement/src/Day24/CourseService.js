@@ -57,7 +57,7 @@ export async function updateCourse(id, course) {
 }
 
 export async function deleteCourse(id) {
-    const response = await fetch (`http://localhost:8080a/course/delete/${id}`, {
+    const response = await fetch (`http://localhost:8080/course/delete/${id}`, {
         method: "DELETE"
     });
 

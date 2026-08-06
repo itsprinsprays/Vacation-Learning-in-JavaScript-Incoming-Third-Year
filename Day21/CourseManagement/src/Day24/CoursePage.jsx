@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { getCourseById, getAllCourses, createCourse, updateCourse } from "./CourseService.js";
+import { getCourseById, getAllCourses, createCourse, updateCourse, deleteCourse } from "./CourseService.js";
 import CourseDetails from "./CourseDetails.jsx";
 import CourseInput from "./CourseInput.jsx";
 import CreateCourseForm from "./CreateCourseForm.jsx"
@@ -31,6 +31,16 @@ export default function CoursePage() {
             fetchAllCourses(page);
         } catch(error) {
             console.error("Error updating course:", error);
+            setError(error.message);
+        }
+    }
+
+    async function handleDeleteCourse(id) {
+        try {
+            await deleteCourse(id);
+            fetchAllCourses(page);
+        } catch(error) {
+            console.error("Error Deleting Course", error);
             setError(error.message);
         }
     }
@@ -85,6 +95,7 @@ export default function CoursePage() {
                             <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Unit</th>
+                            <th colSpan={2}>Function</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,6 +108,11 @@ export default function CoursePage() {
                                     <button onClick={() => {
                                         setEditId(course.courseId);
                                     }}>Edit</button>
+                                </td>
+                                <td>
+                                    <button onClick={() => {
+                                        handleDeleteCourse(course.courseId);
+                                    }}>Delete</button>
                                 </td>
                             </tr>
                         ))}
