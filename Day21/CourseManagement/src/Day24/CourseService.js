@@ -55,3 +55,16 @@ export async function updateCourse(id, course) {
 
     return await response.json();
 }
+
+export async function deleteCourse(id) {
+    const response = await fetch (`http://localhost:8080a/course/delete/${id}`, {
+        method: "DELETE"
+    });
+
+    if(!response.ok) {
+        const errorMessage = await response.json();
+        throw new Error(errorMessage.message);
+    }
+
+    return await response.json();
+}
