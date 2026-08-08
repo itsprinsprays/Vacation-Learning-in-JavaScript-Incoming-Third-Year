@@ -7,20 +7,38 @@ import Day22 from "./components/Day22.jsx"
 import Day23 from "./components/Day23.jsx"
 import Day24 from "./Day24/CoursePage.jsx"
 
+// ✅ Import Routes and Route
+import { Routes, Route } from "react-router-dom";
+
+// ✅ Create placeholder components for Home, About, Contact
+function Home() {
+  return <h2>Home Page</h2>;
+}
+
+function About() {
+  return <h2>About Page</h2>;
+}
+
+function Contact() {
+  return <h2>Contact Page</h2>;
+}
+
 function App() {
   return (
     <>
-    {/* <Header />
-    <div>
-      <h1>Course Management System</h1>
-      <p>Welcome to my first React application!</p> */}
-      {/* <Main name="Prince Benitez" age={21}/> */}
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Day24" element={<Day24 />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
 
-      {/* <Counter /> */}
-      <Day24 />
-    {/* </div>
-    <Footer /> */}
-  </>
+      <div>
+        
+      </div>
+
+      <Footer /> 
+    </>
   )
 }
 
