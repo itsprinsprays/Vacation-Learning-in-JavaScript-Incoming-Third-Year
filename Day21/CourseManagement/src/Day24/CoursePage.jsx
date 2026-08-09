@@ -4,7 +4,7 @@ import CourseDetails from "./CourseDetails.jsx";
 import CourseInput from "./CourseInput.jsx";
 import CreateCourseForm from "./CreateCourseForm.jsx"
 import UpdateCourseForm from "./UpdateCourseForm.jsx";
-import CreateAcount from "./CreateAccount.jsx"
+import CreateAccount from "./CreateAccount.jsx"
 
 export default function CoursePage() {
     const [course, setCourse] = useState(null);
@@ -158,7 +158,7 @@ export default function CoursePage() {
 
             <CreateCourseForm onCreate={handleCreateCourse} />
             <UpdateCourseForm course={course} onUpdate={handleUpdateCourse} />
-            <CreateAcount onCreate={handleCreateAccount}/>
+            <CreateAccount onCreate={handleCreateAccount}/>
                   
                     </>
                 );

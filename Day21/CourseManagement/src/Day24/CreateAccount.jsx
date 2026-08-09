@@ -10,7 +10,7 @@ export default function CreateAccount({ onCreate }) {
     });
 
 
-    function handleChange() {
+    function handleChange(e) {
         setAccount({
             ...account,
             [e.target.name]: e.target.value
@@ -21,6 +21,7 @@ export default function CreateAccount({ onCreate }) {
         e.preventDefault();
 
         await onCreate(account)
+         console.log(account)
 
         setAccount({
             "username": "",
@@ -28,6 +29,7 @@ export default function CreateAccount({ onCreate }) {
             "role": ""
         })
     }
+
     return(
     <form onSubmit={handleSubmit}>
 
@@ -53,9 +55,9 @@ export default function CreateAccount({ onCreate }) {
             onChange={handleChange}
             >
             <option value="">Select Role</option>
-            <option value="admin">Admin</option>
-            <option value="hr">HR</option>
-            <option value="employee">Employee</option>
+            <option value="ADMIN">Admin</option>
+            <option value="HR">HR</option>
+            <option value="EMPLOYEE">Employee</option>
          </select>
 
         <button type="submit">Submit</button>
