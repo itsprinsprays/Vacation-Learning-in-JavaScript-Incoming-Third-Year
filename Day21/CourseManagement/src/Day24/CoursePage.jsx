@@ -4,6 +4,7 @@ import CourseDetails from "./CourseDetails.jsx";
 import CourseInput from "./CourseInput.jsx";
 import CreateCourseForm from "./CreateCourseForm.jsx"
 import UpdateCourseForm from "./UpdateCourseForm.jsx";
+import CreateAcount from "./CreateAccount.jsx"
 
 export default function CoursePage() {
     const [course, setCourse] = useState(null);
@@ -13,6 +14,18 @@ export default function CoursePage() {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(2);
     const [editId, setEditId] = useState(0);
+
+
+    
+    async function handleCreateAccount(formData) {
+        try {
+            await createAccount(formData);
+
+        } catch(error){
+            console.error("error");
+
+        }
+    }
 
 
     async function handleCreateCourse(formData) {
@@ -145,6 +158,7 @@ export default function CoursePage() {
 
             <CreateCourseForm onCreate={handleCreateCourse} />
             <UpdateCourseForm course={course} onUpdate={handleUpdateCourse} />
+            <CreateAcount onCreate={handleCreateAccount}/>
                   
                     </>
                 );

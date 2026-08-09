@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createAccount } from "./UserService.js"
 
 export default function CreateAccount({ onCreate }) {
 
@@ -12,11 +13,11 @@ export default function CreateAccount({ onCreate }) {
     function handleChange() {
         setAccount({
             ...account,
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value
         });
     }
 
-    function handleSubmit(e) {
+   async function handleSubmit(e) {
         e.preventDefault();
 
         await onCreate(account)
@@ -27,7 +28,7 @@ export default function CreateAccount({ onCreate }) {
             "role": ""
         })
     }
-
+    return(
     <form onSubmit={handleSubmit}>
 
         <input 
@@ -61,5 +62,7 @@ export default function CreateAccount({ onCreate }) {
         
 
     </form>
+
+    );
 
 }
