@@ -19,16 +19,18 @@ function Home() {
 function App() {
   return (
     <>
-      {/* <Header />
-      <Routes>
+      { <Header />
+      /*<Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Day24" element={<Day24 />} />
         <Route path="/Day23" element={<Day23 />} />
       </Routes>
-
-
-      <Footer />  */}
-      <h1 className="text-4xl font-bold text-blue-600">Hello Tailwinds</h1>
+        
+ */}
+    <Day24 />
+     <h1 className="text-4xl font-bold text-blue-600">Hello Tailwinds</h1>
+      <Footer /> 
+  
     </>
   )
 }
