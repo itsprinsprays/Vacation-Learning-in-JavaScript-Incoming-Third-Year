@@ -23,7 +23,6 @@ export default function CoursePage() {
 
         } catch(error){
             console.error("error");
-
         }
     }
 
