@@ -86,7 +86,7 @@ export default function CoursePage() {
     return (
         <>
          <div>
-            <h1>Course Page</h1>
+            <h1 className="text-[red]">Course Page</h1>
             <CourseInput
                 courseId={courseId}
                 setCourseId={setCourseId}
