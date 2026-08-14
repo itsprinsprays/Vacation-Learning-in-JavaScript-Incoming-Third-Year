@@ -102,19 +102,19 @@ export default function CoursePage() {
 
 </div>
             <div>
-                <table border="1">
-                    <thead>
+                <table className="w-[95%] border-gray-300 rounded-lg shadow-md mx-[30px]">
+                    <thead className="bg-gray-300">
                         <tr>
-                            <th>Course ID</th>
-                            <th>Course Name</th>
-                            <th>Unit</th>
-                            <th colSpan={2}>Function</th>
+                            <th className="px-4 py-2 text-left text-sm font-bold text-gray-700">Course ID</th>
+                            <th className="px-4 py-2 text-left text-sm font-bold text-gray-700">Course Name</th>
+                            <th className="text-left">Unit</th>
+                            <th colSpan={2} className="px-4 py-2 text-center align-middle">Function</th>
                         </tr>
                     </thead>
                     <tbody>
                         {allCourses.map(course => (
-                            <tr key={course.courseId}>
-                                <td>{course.courseId}</td>
+                            <tr key={course.courseId} className="hover:bg-gray-50">
+                                <td className="text-left px-10 py-5">{course.courseId}</td>
                                 <td>{course.courseName}</td>
                                 <td>{course.unit}</td>
                                 <td>
@@ -127,15 +127,16 @@ export default function CoursePage() {
                                         handleDeleteCourse(course.courseId);
                                     }}>Delete</button>
                                 </td>
+                                
                             </tr>
                         ))}
                     </tbody>
                 </table>
                         
-
+                        
             </div>
-
-                        <button
+                <div className="text-center pt-5 bg-gradient-to-r from-[#f1faee] to-[#e63946]">
+                        <button className="bg-[#f1faee] px-10"
                 onClick={() => {
                     const newPage = page - 1;
                     setPage(newPage);
@@ -146,7 +147,7 @@ export default function CoursePage() {
                 Previous
             </button>
 
-            <button
+            <button className="px-10 bg-[#e63946]"
                 onClick={() => {
                     const newPage = page + 1;
                     setPage(newPage);
@@ -155,10 +156,11 @@ export default function CoursePage() {
             >
                 Next
             </button>
-
+            </div>
+{/* 
             <CreateCourseForm onCreate={handleCreateCourse} />
             <UpdateCourseForm course={course} onUpdate={handleUpdateCourse} />
-            <CreateAccount onCreate={handleCreateAccount}/>
+            <CreateAccount onCreate={handleCreateAccount}/> */}
                   
                     </>
                 );
