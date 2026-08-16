@@ -18,26 +18,25 @@ export default function AllCourses({ onFetchAll }) {
         <>
         <div className="m-[10px] ">
 
-        <table className="border-collapse rounded bg-[#EBE1E1] w-full text-center">
+        <table className="border-collapse bg-[#EBE1E1] w-full text-center">
             <thead>
                 <tr>
                     <th className="border">ID</th>
                     <th className="border">Course Name</th>
-                    <th className="border">Unit</th>
+                    <th className="border rounded p-3 font-semibold">Unit</th>
                 </tr>
             </thead>
             <tbody>
                 {fullCourses.map((course) => (
                     <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[gray]">
-                        <td className="border ">{course.courseId}</td>
-                        <td className="border">{course.courseName}</td>
-                        <td className="border">{course.unit}</td>
+                        <td className=" ">{course.courseId}</td>
+                        <td className="">{course.courseName}</td>
+                        <td className="">{course.unit}</td>
                     </tr>
                 ))}
             </tbody>
         </table>
         </div>
-           <h2>hello</h2>
            </>
     )
 

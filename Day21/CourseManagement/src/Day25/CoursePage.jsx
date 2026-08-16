@@ -25,7 +25,7 @@ export default function CoursePage() {
 
     return (
         <>
-        <CreateCourse onCreate={handleCreateCourse}/>
+         <CreateCourse onCreate={handleCreateCourse}/>
         <AllCourses onFetchAll={handleFetchAllCourses}/>
         </>
     )

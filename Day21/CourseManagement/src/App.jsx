@@ -17,13 +17,16 @@
   
   function App() {
     return (
-      <>
-      <Navs />
-      <Routes>
-        <Route path="/courses" element={<CoursePage />} />
-      </Routes>
+      <>  
+    <div className="flex">
+        <Navs />
 
-          
+      <div className="flex-1 p-6 bg-gray-50">
+        <Routes>
+          <Route path="/courses" element={<CoursePage />} />
+        </Routes>
+      </div>
+    </div>      
   
       </>
     )
