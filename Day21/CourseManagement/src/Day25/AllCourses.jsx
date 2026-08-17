@@ -16,26 +16,30 @@ export default function AllCourses({ onFetchAll }) {
 
     return(
         <>
-        <div className="m-[10px] ">
+        <div className="m-[10px]">
 
-        <table className="border-collapse bg-[#EBE1E1] w-full text-center">
+        <table className="w-full text-left bg-white">
             <thead>
                 <tr>
-                    <th className="border">ID</th>
-                    <th className="border">Course Name</th>
-                    <th className="border rounded p-3 font-semibold">Unit</th>
+                    <th className="border-b-2 p-3 font-semibold">ID</th>
+                    <th className="border-r border-t">Course Name</th>
+                    <th className="border-r border-t p-3 font-semibold">Unit</th>
                 </tr>
             </thead>
             <tbody>
                 {fullCourses.map((course) => (
                     <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[gray]">
-                        <td className=" ">{course.courseId}</td>
+                        <td className="border-b p-3 rounded">{course.courseId}</td>
                         <td className="">{course.courseName}</td>
                         <td className="">{course.unit}</td>
                     </tr>
                 ))}
             </tbody>
         </table>
+        <div className="flex justify-end m-[10px]">
+        <button className="border rounded bg-[green] text-white p-[10px] m-[10px] transition-colors duration-300 hover:bg-[#6EB582]">Previous</button>
+        <button className="border rounded bg-[green] text-white p-[10px] m-[10px] px-[23px]">Next</button>
+        </div>
         </div>
            </>
     )
