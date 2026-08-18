@@ -18,20 +18,20 @@ export default function AllCourses({ onFetchAll }) {
         <>
         <div className="m-[10px]">
 
-        <table className="w-full text-left bg-white">
+        <table className="table-auto border-separate border-spacing-y-2 w-full text-left bg-white">
             <thead>
                 <tr>
-                    <th className="border-b-2 p-3 font-semibold">ID</th>
-                    <th className="border-r border-t">Course Name</th>
-                    <th className="border-r border-t p-3 font-semibold">Unit</th>
+                    <th className="p-3 font-semibold text-gray-400 text-sm">ID</th>
+                    <th className="p-3 font-semibold text-gray-400 text-sm">Course Name</th>
+                    <th className="p-3 font-semibold text-gray-400 text-sm">Unit</th>
                 </tr>
             </thead>
             <tbody>
                 {fullCourses.map((course) => (
-                    <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[gray]">
-                        <td className="border-b p-3 rounded">{course.courseId}</td>
-                        <td className="">{course.courseName}</td>
-                        <td className="">{course.unit}</td>
+                    <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] border border-gray-300 border-[0.5px] rounded-md">
+                        <td className="p-3 border border-r-0 border-gray-200 rounded-l-lg">{course.courseId}</td>
+                        <td className="p-3 border-y border-gray-200">{course.courseName}</td>
+                        <td className="p-3 border-y border-r border-gray-200 rounded-r-lg">{course.unit}</td>
                     </tr>
                 ))}
             </tbody>
