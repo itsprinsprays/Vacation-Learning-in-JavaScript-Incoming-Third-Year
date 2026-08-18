@@ -29,7 +29,7 @@ export default function AllCourses({ onFetchAll }) {
             </thead>
             <tbody>
                 {fullCourses.map((course) => (
-                    <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] border border-gray-300 border-[0.5px] rounded-md text-white">
+                    <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] text-white">
                         <td className="p-3 border border-r-0 border-gray-200 rounded-l-lg">{course.courseId}</td>
                         <td className="p-3 border-y border-gray-200">{course.courseName}</td>
                         <td className="p-3 border-y border-r border-gray-200 rounded-r-lg">{course.unit}</td>
@@ -38,11 +38,15 @@ export default function AllCourses({ onFetchAll }) {
             </tbody>
         </table>
         <div className="flex justify-end m-[10px]">
-        <button className="border rounded bg-[green] text-white p-[10px] m-[10px] transition-colors duration-300 hover:bg-[#6EB582]">Previous</button>
+        <button disabled={page === 0} className="border rounded bg-[green] text-white p-[10px] m-[10px] transition-colors duration-300 disabled:opacity-40 hover:bg-[#6EB582]" onClick={() => {
+         
+            const previousPage = page - 1;
+            setPage(previousPage);
+
+        }}>Previous</button>
         <button className="border rounded bg-[green] text-white p-[10px] m-[10px] px-[23px]" onClick={() => {
             const nextPage = page + 1;
             setPage(nextPage);
-
         }}> Next</button>
         </div>
         </div>
