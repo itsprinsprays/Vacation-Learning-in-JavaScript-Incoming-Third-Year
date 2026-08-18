@@ -12,13 +12,14 @@ export default function AllCourses({ onFetchAll }) {
           setFullCourses(data.content || data);
         }
         loadCourses();
-    }, [onFetchAll]);
+    }, [onFetchAll, size, page]);
 
     return(
         <>
-        <div className="m-[10px]">
+        <div className="m-[10px] p-[100px] relative bg-black">
+            <h1 className="text-white absolute top-[40px] text-4xl">Courses</h1>
 
-        <table className="table-auto border-separate border-spacing-y-2 w-full text-left bg-white">
+        <table className="table-auto border-separate border-spacing-y-1 w-full text-left ">
             <thead>
                 <tr>
                     <th className="p-3 font-semibold text-gray-400 text-sm">ID</th>
@@ -28,7 +29,7 @@ export default function AllCourses({ onFetchAll }) {
             </thead>
             <tbody>
                 {fullCourses.map((course) => (
-                    <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] border border-gray-300 border-[0.5px] rounded-md">
+                    <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] border border-gray-300 border-[0.5px] rounded-md text-white">
                         <td className="p-3 border border-r-0 border-gray-200 rounded-l-lg">{course.courseId}</td>
                         <td className="p-3 border-y border-gray-200">{course.courseName}</td>
                         <td className="p-3 border-y border-r border-gray-200 rounded-r-lg">{course.unit}</td>
@@ -38,7 +39,11 @@ export default function AllCourses({ onFetchAll }) {
         </table>
         <div className="flex justify-end m-[10px]">
         <button className="border rounded bg-[green] text-white p-[10px] m-[10px] transition-colors duration-300 hover:bg-[#6EB582]">Previous</button>
-        <button className="border rounded bg-[green] text-white p-[10px] m-[10px] px-[23px]">Next</button>
+        <button className="border rounded bg-[green] text-white p-[10px] m-[10px] px-[23px]" onClick={() => {
+            const nextPage = page + 1;
+            setPage(nextPage);
+
+        }}> Next</button>
         </div>
         </div>
            </>
