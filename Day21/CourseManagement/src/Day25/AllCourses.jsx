@@ -6,6 +6,7 @@ export default function AllCourses({ onFetchAll }) {
     const [size, setSize] = useState(5);
     const [page, setPage] = useState(0);
     const [able, setAble] = useState(true);
+    const [openMenuId, setOpenMenuId] = useState(null);
 
     useEffect(() => {
         async function loadCourses() {
@@ -34,7 +35,27 @@ export default function AllCourses({ onFetchAll }) {
                     <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] text-black">
                         <td className="p-3 border border-r-0 border-gray-300 rounded-l-lg">{course.courseId}</td>
                         <td className="p-3 border-y border-gray-300">{course.courseName}</td>
-                        <td className="p-3 border-y border-r border-gray-300 rounded-r-lg">{course.unit}</td>
+                        <td className="p-3 border-y border-gray-300 ">{course.unit}</td>
+                     
+<td className="p-3 border-y border-r border-gray-300 rounded-r-lg relative">
+    <button
+        onClick={() => setOpenMenuId(openMenuId === course.courseId ? null : course.courseId)}
+        className="px-2 text-gray-400 hover:text-gray-600"
+    >
+        ⋯
+    </button>
+
+    {openMenuId === course.courseId && (
+        <div className="absolute right-0 mt-1 w-32 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+            <button className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Edit
+            </button>
+            <button className="block w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100">
+                Delete
+            </button>
+        </div>
+    )}
+</td>
                     </tr>
                 ))}
             </tbody>
@@ -52,8 +73,10 @@ export default function AllCourses({ onFetchAll }) {
         <button disabled={fullCourses.length === 0}className="border rounded bg-[green] text-white p-[10px] m-[10px] transition-colors duration-300 hover:bg-[#6EB582] px-[23px] disabled:opacity-40"  onClick={() => {
             const nextPage = page + 1;
             setPage(nextPage);
+
         }}> Next</button>
         </div>
+
         </div>
            </>
     )
