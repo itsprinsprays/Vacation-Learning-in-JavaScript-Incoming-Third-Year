@@ -49,7 +49,7 @@ export default function AllCourses({ onFetchAll }) {
             setPage(previousPage);
 
         }}>Previous</button>
-        <button disabled={fullCourses.length === 0}className="border rounded bg-[green] text-white p-[10px] m-[10px] px-[23px] disabled:opacity-40"  onClick={() => {
+        <button disabled={fullCourses.length === 0}className="border rounded bg-[green] text-white p-[10px] m-[10px] transition-colors duration-300 hover:bg-[#6EB582] px-[23px] disabled:opacity-40"  onClick={() => {
             const nextPage = page + 1;
             setPage(nextPage);
         }}> Next</button>
