@@ -21,6 +21,15 @@ export default function CoursePage() {
             throw new Error(error);
         }
     }
+
+    async function handleUpdateCourse(courseId, data) {
+        try {
+            const updatedData = await updateCourse(courseId, data);
+            return updatedData;
+        } catch(error) {
+            throw new Error(error);
+        }
+    }
     
 
     return (

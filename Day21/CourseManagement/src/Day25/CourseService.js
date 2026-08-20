@@ -25,3 +25,20 @@ export async function fetchAllCourses(size = 2, pageNum = 0) {
 
     return await response.json();
 }
+
+export async function updateCourse(courseId, data) {
+    const response = await fetch(`http://localhost:8080/course/update/${courseId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    if(!response.ok) { 
+        const errorMessage = await response.json();
+        throw new Error(errorMessage.error);
+    }
+
+    return await response.json();
+}
