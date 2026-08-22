@@ -11,13 +11,14 @@ export default function AllCourses({ onFetchAll, onDelete }) {
     const [remove, setRemove] = useState(false);
 
     useEffect(() => {
-        async function loadCourses() {
+        loadCourses();
+    }, [onFetchAll, size, page]);
+
+     async function loadCourses() {
           const data =  await onFetchAll(size, page);
           setFullCourses(data.content || data);
 
         }
-        loadCourses();
-    }, [onFetchAll, size, page]);
 
     function handleChange(e) {
         setCourse({
@@ -25,6 +26,8 @@ export default function AllCourses({ onFetchAll, onDelete }) {
         [e.target.name]: e.target.value
        });
     }
+
+    
 
 
     return(
@@ -69,10 +72,10 @@ export default function AllCourses({ onFetchAll, onDelete }) {
                         <button className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setEditId(course.courseId)}>
                             Edit
                         </button>
-                        <button className="block w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100" onClick={() => {
+                        <button className="block w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100" onClick={async () => {
 
-                            onDelete(course.courseId)
-                            loadCourses();
+                            await onDelete(course.courseId)
+                            await loadCourses();
                         }}>
                             Delete
                         </button>
