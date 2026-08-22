@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { createCourse, fetchAllCourses, updateCourse, deleteCourse } from "./CourseService.js";
 import CreateCourse from "./CreateCourse.jsx";
 import AllCourses from "./AllCourses.jsx";
 
 export default function CoursePage() {
 
+    const [refreshPage, setRefreshPage] = useState(0);
+
    async function handleCreateCourse(data) {
         try {
            await createCourse(data);
+           setRefreshPage((prev) => prev + 1);
         } catch(error){
             throw new Error(error);
         }
@@ -43,7 +46,9 @@ export default function CoursePage() {
     return (
         <>
          <CreateCourse onCreate={handleCreateCourse}/>
-        <AllCourses onFetchAll={handleFetchAllCourses} onDelete={handleDeleteCourse}/>
+        <AllCourses onFetchAll={handleFetchAllCourses} 
+                    onDelete={handleDeleteCourse} 
+                    onRefreshPage={refreshPage}/>
         </>
     )
 

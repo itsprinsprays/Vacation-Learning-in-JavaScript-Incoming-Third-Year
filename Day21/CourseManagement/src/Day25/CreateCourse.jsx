@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CreateCourse({ onCreate }) {
 
@@ -6,6 +6,7 @@ export default function CreateCourse({ onCreate }) {
         "courseName": "",
         "unit": ""
     });
+
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -16,6 +17,7 @@ export default function CreateCourse({ onCreate }) {
             "courseName": "",
             "unit": ""
         });
+
     }
 
     function handleChange(e) {

@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
 
-export default function AllCourses({ onFetchAll, onDelete }) {
+export default function AllCourses({ onFetchAll, onDelete, onRefreshPage }) {
 
     const [fullCourses, setFullCourses] = useState([]);
     const [size, setSize] = useState(5);
     const [page, setPage] = useState(0);
     const [openMenuId, setOpenMenuId] = useState(null);
     const [editId, setEditId] = useState(true);
-    const [course, setCourse] = useState(null);
-    const [remove, setRemove] = useState(false);
+
 
     useEffect(() => {
         loadCourses();
-    }, [onFetchAll, size, page]);
+    }, [onFetchAll, size, page, onRefreshPage]);
 
      async function loadCourses() {
           const data =  await onFetchAll(size, page);
@@ -46,16 +45,7 @@ export default function AllCourses({ onFetchAll, onDelete }) {
             <tbody>
                 {fullCourses.map((course) => (
                     <tr key={course.courseId} className="transition-colors duration-300 hover:bg-[#6EB582] text-black">
-                        <td className="p-3 border border-r-0 border-gray-300 rounded-l-lg">
-                            <input
-                                type="text"
-                                value={course.courseId}
-                                name="courseId"
-                                onChange={handleChange}
-                                disabled={editId !== course.courseId}
-                                />
-                            
-                            {course.courseId}</td>
+                        <td className="p-3 border border-r-0 border-gray-300 rounded-l-lg"> {course.courseId}</td>
                         <td className="p-3 border-y border-gray-300">{course.courseName}</td>
                         <td className="p-3 border-y border-gray-300 ">{course.unit}</td>
                      
