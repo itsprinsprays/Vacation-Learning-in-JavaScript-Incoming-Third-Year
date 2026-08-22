@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function AllCourses({ onFetchAll }) {
+export default function AllCourses({ onFetchAll, onDelete }) {
 
     const [fullCourses, setFullCourses] = useState([]);
     const [size, setSize] = useState(5);
@@ -8,6 +8,7 @@ export default function AllCourses({ onFetchAll }) {
     const [openMenuId, setOpenMenuId] = useState(null);
     const [editId, setEditId] = useState(true);
     const [course, setCourse] = useState(null);
+    const [remove, setRemove] = useState(false);
 
     useEffect(() => {
         async function loadCourses() {
@@ -24,6 +25,7 @@ export default function AllCourses({ onFetchAll }) {
         [e.target.name]: e.target.value
        });
     }
+
 
     return(
         <>
@@ -67,7 +69,11 @@ export default function AllCourses({ onFetchAll }) {
                         <button className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setEditId(course.courseId)}>
                             Edit
                         </button>
-                        <button className="block w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100">
+                        <button className="block w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100" onClick={() => {
+
+                            onDelete(course.courseId)
+                            loadCourses();
+                        }}>
                             Delete
                         </button>
                     </div>

@@ -42,3 +42,19 @@ export async function updateCourse(courseId, data) {
 
     return await response.json();
 }
+
+export async function deleteCourse(courseId) {
+    const response = await fetch(`http://localhost:8080/course/delete/${courseId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+    if(!response.ok) {
+        const errorMessage = await response.json();
+        throw new Error(errorMessage.message);
+    }
+
+    return await response.json();
+}

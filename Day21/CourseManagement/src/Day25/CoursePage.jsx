@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { createCourse, fetchAllCourses } from "./CourseService.js";
+import { createCourse, fetchAllCourses, updateCourse, deleteCourse } from "./CourseService.js";
 import CreateCourse from "./CreateCourse.jsx";
 import AllCourses from "./AllCourses.jsx";
 
@@ -30,12 +30,20 @@ export default function CoursePage() {
             throw new Error(error);
         }
     }
+
+    async function handleDeleteCourse(courseId) {
+        try {
+            await deleteCourse(courseId);
+        } catch(error) {
+            throw new Error(error);
+        }
+    }
     
 
     return (
         <>
          <CreateCourse onCreate={handleCreateCourse}/>
-        <AllCourses onFetchAll={handleFetchAllCourses}/>
+        <AllCourses onFetchAll={handleFetchAllCourses} onDelete={handleDeleteCourse}/>
         </>
     )
 
