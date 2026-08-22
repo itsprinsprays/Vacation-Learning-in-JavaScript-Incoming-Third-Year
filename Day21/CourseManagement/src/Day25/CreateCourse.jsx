@@ -8,10 +8,10 @@ export default function CreateCourse({ onCreate }) {
     });
 
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        onCreate(course);
+        await onCreate(course);
 
         setCourse({
             "courseName": "",
