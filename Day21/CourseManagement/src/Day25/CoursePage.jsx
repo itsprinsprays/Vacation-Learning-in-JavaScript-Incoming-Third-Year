@@ -12,7 +12,7 @@ export default function CoursePage() {
            await createCourse(data);
            setRefreshPage((prev) => prev + 1);
         } catch(error){
-            throw new Error(error);
+            throw error;
         }
     }
 
@@ -45,7 +45,7 @@ export default function CoursePage() {
 
     return (
         <>
-         <CreateCourse onCreate={handleCreateCourse}/>
+     
         <AllCourses onFetchAll={handleFetchAllCourses} 
                     onDelete={handleDeleteCourse} 
                     onRefreshPage={refreshPage}/>
